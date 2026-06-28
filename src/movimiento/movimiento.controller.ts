@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { MovimientoService } from './movimiento.service';
 import {CrearMovimientoDto} from './CrearMovimientoDto';
 import { ParseIntPipe } from '@nestjs/common';
-import {ActualizarMovimientoDto} from './ActualizarMovimientoDto';
+import { CompletarMovimientoDto } from './CompletarMovimientoDto';
 @Controller('movimiento')
 export class MovimientoController {
 
@@ -22,25 +22,25 @@ export class MovimientoController {
         return this.movimientoService.obtenerMovimientos();
     }
 
-    @Get(':id')
+    @Get(":id")
     obtenerMovimiento(
-        @Param('id', ParseIntPipe) id: number
+        @Param("id", ParseIntPipe) id:number
     ) {
         return this.movimientoService.obtenerMovimiento(id);
     }
 
-    @Put(':id')
-    actualizarMovimiento(
-        @Param('id', ParseIntPipe) id: number,
-        @Body() dto: ActualizarMovimientoDto
-    ) {
-        return this.movimientoService.actualizarMovimiento(id, dto);
+    @Put(":id/completar")
+    completarMovimiento(
+        @Param("id", ParseIntPipe) id:number,
+        @Body() dto: CompletarMovimientoDto
+    ){
+        return this.movimientoService.completarMovimiento(id,dto);
     }
 
-    @Delete(':id')
+    @Delete(":id")
     eliminarMovimiento(
-        @Param('id', ParseIntPipe) id: number
-    ) {
+        @Param("id", ParseIntPipe) id:number
+    ){
         return this.movimientoService.eliminarMovimiento(id);
     }
 }

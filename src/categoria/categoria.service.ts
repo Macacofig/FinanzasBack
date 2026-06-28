@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CategoriaEntity } from './categoria.entity';
 import { Repository } from 'typeorm';
-
+import { CrearCategoriaDto } from './CrearCategoriaDto';
 @Injectable()
 export class CategoriaService {
 
@@ -18,5 +18,13 @@ export class CategoriaService {
             }
         });
     }
+
+    async crearCategoria(dto:CrearCategoriaDto){
+
+    const categoria = this.repository.create(dto);
+
+    return this.repository.save(categoria);
+
+}
 
 }

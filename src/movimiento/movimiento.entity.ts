@@ -13,7 +13,9 @@ export class MovimientoEntity {
     @PrimaryGeneratedColumn()
     id?: number;
 
-    @Column()
+    @Column({
+        nullable:true
+    })
     titulo?: string;
 
     @Column("decimal")
@@ -22,16 +24,25 @@ export class MovimientoEntity {
     @Column()
     tipo?: string;
 
-    @ManyToOne(() => CategoriaEntity)
-    @JoinColumn({ name: "categoriaId" })
+    @ManyToOne(() => CategoriaEntity,{
+        nullable:true
+    })
+    @JoinColumn({
+        name:"categoriaId"
+    })
     categoria?: CategoriaEntity;
 
     @Column({
-        nullable: true
+        nullable:true
     })
     descripcion?: string;
 
     @Column()
     fecha?: Date;
+
+    @Column({
+        default:false
+    })
+    completado?: boolean;
 
 }
