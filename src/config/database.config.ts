@@ -23,5 +23,5 @@ export const databaseConfig = (
 
   autoLoadEntities: true,
 
-  synchronize: false,
+  synchronize: true,
 });

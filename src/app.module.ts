@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MovimientoModule } from './movimiento/movimiento.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { databaseConfig } from './config/database.config';
+import { CategoriaModule } from './categoria/categoria.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -15,6 +16,7 @@ import { databaseConfig } from './config/database.config';
     }),
 
     MovimientoModule,
+    CategoriaModule,
   ],
 })
 export class AppModule {}

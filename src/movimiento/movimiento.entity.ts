@@ -1,8 +1,11 @@
 import {
     Entity,
     PrimaryGeneratedColumn,
-    Column
+    Column,
+    ManyToOne,
+    JoinColumn
 } from "typeorm";
+import { CategoriaEntity } from "../categoria/categoria.entity";
 
 @Entity("movimientos")
 export class MovimientoEntity {
@@ -19,8 +22,9 @@ export class MovimientoEntity {
     @Column()
     tipo?: string;
 
-    @Column()
-    categoriaId?: number;
+    @ManyToOne(() => CategoriaEntity)
+    @JoinColumn({ name: "categoriaId" })
+    categoria?: CategoriaEntity;
 
     @Column({
         nullable: true
